@@ -65,6 +65,10 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "proxyConfig": "proxy.conf.json",
+            "buildTarget": "fire-front:build"
+          },
           "configurations": {
             "production": {
               "buildTarget": "fire-front:build:production"
