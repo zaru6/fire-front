@@ -1,15 +1,10 @@
-<form (submit)="addProduct(product)" #productForm="ngForm">
-    <div class="form-group">
-        <label for="name">Name:</label>
-        <input type="text" class="form-control" id="name" name="name" [(ngModel)]="product.name" required>
-    </div>
-    <div class="form-group">
-        <label for="price">Price:</label>
-        <input type="number" class="form-control" id="price" name="price" [(ngModel)]="product.price" required>
-    </div>
-    <div class="form-group">
-        <label for="available">Available:</label>
-        <input type="checkbox" id="available" name="available" [(ngModel)]="product.available" [checked]="product.available">
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+<form (ngSubmit)="addProduct(product)">
+    <label>Name:</label>
+    <input type="text" [(ngModel)]="product.name" name="name"><br><br>
+    <label>Price:</label>
+    <input type="number" [(ngModel)]="product.price" name="price"><br><br>
+    <label>Available:</label>
+    <input type="checkbox" [(ngModel)]="product.available" name="available"><br><br>
+    <input type="submit" value="Add Product">
+    <p *ngIf="productMessage">{{ productMessage }}</p>
 </form>
