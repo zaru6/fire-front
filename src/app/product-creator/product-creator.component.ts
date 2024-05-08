@@ -1,29 +1,29 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { ProductService } from '../product.service';
+import { Product } from '../product.model';
 
 @Component({
   selector: 'app-product-creator',
   templateUrl: './product-creator.component.html'
 })
 export class ProductCreatorComponent {
-  product = {
+  product: Product = {
+    id: 0,
     name: '',
     price: 0,
-    available: false // Initialize available as a boolean
+    available: false
   };
   productMessage: string = '';
 
-  constructor(private http: HttpClient) { }
+  constructor(private productService: ProductService) { }
 
-  addProduct(product: any) {
-    this.http.post('http://localhost:8080/api/products', product)
-      .subscribe(response => {
+  addProduct() {
+    this.productService.addProduct(this.product)
+     .subscribe(response => {
         this.productMessage = 'Object insertion successful';
-        console.log(response);
       }, error => {
         this.productMessage = 'Object insertion failed';
-        console.error(error);
       });
   }
-  
+
 }

@@ -15,6 +15,7 @@
       <td>{{ product.price }}</td>
       <td>{{ product.available }}</td>
       <td>
+        <button (click)="onUpdateProduct(product)">Update</button>
         <button (click)="deleteProduct(product.id)">Delete</button>
       </td>
     </tr>

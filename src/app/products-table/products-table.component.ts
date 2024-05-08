@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../api.service';
 import { Product } from '../product.model';
 import { HttpClient } from '@angular/common/http';
+import { ProductService } from '../product.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-products-table',
@@ -12,24 +13,19 @@ export class ProductsTableComponent implements OnInit {
   products: Product[] = [];
   productMessage: string = '';
 
-  constructor(private apiService: ApiService, private http: HttpClient) { }
+  constructor(private productService: ProductService, private http: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
-    this.apiService.getProducts().subscribe(products => {
+    this.productService.getProducts().subscribe(products => {
       this.products = products;
     });
   }
 
   deleteProduct(productId: number) {
-    this.http.delete(`http://localhost:8080/api/products/${productId}`)
-    .subscribe(response => {
-        this.productMessage = 'Product deletion successful';
-        console.log(response);
-        // Remove the product from the products array
-        this.products = this.products.filter(product => product.id!== productId);
-      }, error => {
-        this.productMessage = 'Product deletion failed';
-        console.error(error);
-    });
+    this.productService.deleteProduct(productId);
+  }
+
+  onUpdateProduct(product: Product) {
+    this.router.navigate(['/products', product.id, 'edit']);
   }
 }
