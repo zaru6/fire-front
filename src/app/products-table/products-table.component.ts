@@ -22,7 +22,15 @@ export class ProductsTableComponent implements OnInit {
   }
 
   deleteProduct(productId: number) {
-    this.productService.deleteProduct(productId);
+    this.productService.deleteProduct(productId).subscribe(
+      () => {
+        console.log("Product deleted successfully");
+        location.reload(); // Refresh the page
+      },
+      (error) => {
+        console.error("Error deleting product:", error);
+      }
+    );
   }
 
   onUpdateProduct(product: Product) {
