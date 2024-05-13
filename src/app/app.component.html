@@ -1,12 +1,10 @@
-<!-- The whole app will be rendered inside this router-outlet -->
-<router-outlet></router-outlet>
-
-<!-- Let's add a simple navigation menu -->
-<nav>
-  <a routerLink="">Home</a>
-  <a routerLink="/products">Products</a>
-  <a routerLink="/create-prod">Create</a>
-</nav>
-
-<!-- And a router-outlet to render the components -->
-<router-outlet></router-outlet>
+<div>
+  <app-header [pageTitle]="'Frontend authenticated with JWT'" [logoSrc]="'assets/images/logo.png'" />
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col">
+	      <app-content />
+      </div>
+    </div>
+  </div>
+</div>
