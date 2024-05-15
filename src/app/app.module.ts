@@ -11,12 +11,14 @@ import { HeaderComponent } from './header/header.component';
 import { AuthContentComponent } from './auth-content/auth-content.component';
 import { WelcomeContentComponent } from './welcome-content/welcome-content.component';
 import { ButtonsComponent } from './buttons/buttons.component';
-import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTabsModule } from '@angular/material/tabs';
+import { NavbarComponent } from './navbar/navbar.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
-  declarations: [AppComponent, ProductsTableComponent, ProductCreatorComponent, ProductUpdateComponent, HeaderComponent, AuthContentComponent, WelcomeContentComponent, ButtonsComponent, HomeComponent],
+  declarations: [AppComponent, ProductsTableComponent, ProductCreatorComponent, ProductUpdateComponent, HeaderComponent, AuthContentComponent, WelcomeContentComponent, ButtonsComponent, LoginComponent, NavbarComponent, HomeComponent],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule, BrowserAnimationsModule, MatTabsModule ],
   providers: [],
   bootstrap: [AppComponent]

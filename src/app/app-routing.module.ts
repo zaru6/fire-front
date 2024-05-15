@@ -4,9 +4,13 @@ import { ProductsTableComponent } from './products-table/products-table.componen
 import { ProductCreatorComponent } from './product-creator/product-creator.component';
 import { AppComponent } from './app.component';
 import { ProductUpdateComponent } from './product-update/product-update.component';
+import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   { path: '', component: AppComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'home', component: HomeComponent },
   { path: 'products', component: ProductsTableComponent },
   { path: 'create-prod', component: ProductCreatorComponent },
   { path: 'products/:id/edit', component: ProductUpdateComponent }
