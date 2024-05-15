@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
@@ -11,11 +11,15 @@ export class HomeComponent {
   password = '';
   newUsername = '';
   newPassword = '';
+  newFullName = '';
 
   constructor(private http: HttpClient) {}
 
   onSubmit(formData: any) {
-    this.http.post('http://localhost:8080/login', formData).subscribe(
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    const body = { username: formData.username, password: formData.password };
+
+    this.http.post('http://localhost:8080/auth/login', body, { headers }).subscribe(
       (response) => {
         // Handle successful login
         console.log(response);
@@ -28,7 +32,10 @@ export class HomeComponent {
   }
 
   onRegister(formData: any) {
-    this.http.post('http://localhost:8080/register', formData).subscribe(
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    const body = { email: formData.newUsername, fullName: formData.newFullName, password: formData.newPassword };
+
+    this.http.post('http://localhost:8080/auth/signup', body, { headers }).subscribe(
       (response) => {
         // Handle successful registration
         console.log(response);
