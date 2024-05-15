@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../product.model';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ProductService } from '../product.service';
 import { Router } from '@angular/router';
+import { AuthenticationService } from '../authentication.service';
 
 @Component({
   selector: 'app-products-table',
@@ -13,7 +14,7 @@ export class ProductsTableComponent implements OnInit {
   products: Product[] = [];
   productMessage: string = '';
 
-  constructor(private productService: ProductService, private http: HttpClient, private router: Router) { }
+  constructor(private productService: ProductService, private http: HttpClient, private router: Router, private authenticationService: AuthenticationService) { }
 
   ngOnInit(): void {
     this.productService.getProducts().subscribe(products => {
@@ -22,6 +23,7 @@ export class ProductsTableComponent implements OnInit {
   }
 
   deleteProduct(productId: number) {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.authenticationService.getToken()}`);
     this.productService.deleteProduct(productId).subscribe(
       () => {
         console.log("Product deleted successfully");
