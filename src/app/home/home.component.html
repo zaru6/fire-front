@@ -1,0 +1,30 @@
+<h1 class="centered">Index page!!!!</h1>
+
+<mat-tab-group>
+    <mat-tab label="Login">
+        <form #loginForm="ngForm" class="center-form" (ngSubmit)="onSubmit(loginForm.value)">
+            <div class="form-element">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" [(ngModel)]="username" required>
+            </div>
+            <div class="form-element">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" [(ngModel)]="password" required>
+            </div>
+            <button type="submit" class="center-button">Login</button>
+        </form>
+    </mat-tab>
+    <mat-tab label="Register">
+        <form #registerForm="ngForm" class="center-form" (ngSubmit)="onRegister(registerForm.value)">
+            <div class="form-element">
+                <label for="newUsername">New username:</label>
+                <input type="text" id="newUsername" name="newUsername" [(ngModel)]="newUsername" required>
+            </div>
+            <div class="form-element">
+                <label for="newPassword">New password:</label>
+                <input type="password" id="newPassword" name="newPassword" [(ngModel)]="newPassword" required>
+            </div>
+            <button type="submit" class="center-button">Register</button>
+        </form>
+    </mat-tab>
+</mat-tab-group>

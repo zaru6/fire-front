@@ -10,14 +10,15 @@ import { ProductUpdateComponent } from './product-update/product-update.componen
 import { HeaderComponent } from './header/header.component';
 import { AuthContentComponent } from './auth-content/auth-content.component';
 import { WelcomeContentComponent } from './welcome-content/welcome-content.component';
-import { LoginFormComponent } from './login-form/login-form.component';
-import { ContentComponent } from './content/content.component';
 import { ButtonsComponent } from './buttons/buttons.component';
+import { HomeComponent } from './home/home.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
-  declarations: [AppComponent, ProductsTableComponent, ProductCreatorComponent, ProductUpdateComponent, HeaderComponent, AuthContentComponent, WelcomeContentComponent, LoginFormComponent, ContentComponent, ButtonsComponent],
-  imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule],
+  declarations: [AppComponent, ProductsTableComponent, ProductCreatorComponent, ProductUpdateComponent, HeaderComponent, AuthContentComponent, WelcomeContentComponent, ButtonsComponent, HomeComponent],
+  imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule, BrowserAnimationsModule, MatTabsModule ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
