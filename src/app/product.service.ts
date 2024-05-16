@@ -16,7 +16,7 @@ export class ProductService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcmRlxb4iLCJpYXQiOjE3MTU4NzI4NTUsImV4cCI6MTcxNTg3NjQ1NX0.UglG2KHVWYkk99Q1KSMWJMdSJqPFZ9F7QAXo4CEpKPk' 
+        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcmRlxb4iLCJpYXQiOjE3MTU4ODE4NzYsImV4cCI6MTcxNTg4NTQ3Nn0.sfRIiu_gQmVAe1csqWF4LnDwIWwhMHSLbRdxdmZ_i-M' 
       })
     };
     return this.http.get<Product[]>(this.apiUrl, httpOptions);
