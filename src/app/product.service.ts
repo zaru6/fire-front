@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Product } from './product.model';
 import { Observable } from 'rxjs';
 
@@ -13,7 +13,13 @@ export class ProductService {
   constructor(private http: HttpClient) { }
 
   getProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.apiUrl);
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcmRlxb4iLCJpYXQiOjE3MTU4NzI4NTUsImV4cCI6MTcxNTg3NjQ1NX0.UglG2KHVWYkk99Q1KSMWJMdSJqPFZ9F7QAXo4CEpKPk' 
+      })
+    };
+    return this.http.get<Product[]>(this.apiUrl, httpOptions);
   }
 
   getProduct(id: number): Observable<Product> {

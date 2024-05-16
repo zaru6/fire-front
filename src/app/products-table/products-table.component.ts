@@ -22,6 +22,28 @@ export class ProductsTableComponent implements OnInit {
     });
   }
 
+  /*
+  ngOnInit(): void {
+    // Set the headers with the necessary authentication or authorization details
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcmRlxb4iLCJpYXQiOjE3MTU4NzI4NTUsImV4cCI6MTcxNTg3NjQ1NX0.UglG2KHVWYkk99Q1KSMWJMdSJqPFZ9F7QAXo4CEpKPk' // Replace with your token or auth details
+    });
+
+    // Use the headers in the HTTP request
+    this.http.get('http://localhost:8080/api/products', { headers })
+     .pipe(
+        catchError(error => {
+          // Handle the error and return a user-friendly message
+          console.error(error);
+          return throwError('Error fetching products: ');
+        })
+      )
+     .subscribe(response => {
+        console.log(response);
+      });
+  }
+  */
+
   deleteProduct(productId: number) {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.authenticationService.getToken()}`);
     this.productService.deleteProduct(productId).subscribe(

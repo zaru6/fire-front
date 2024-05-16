@@ -8,7 +8,6 @@ import { ProductCreatorComponent } from './product-creator/product-creator.compo
 import { FormsModule } from '@angular/forms';
 import { ProductUpdateComponent } from './product-update/product-update.component';
 import { HeaderComponent } from './header/header.component';
-import { AuthContentComponent } from './auth-content/auth-content.component';
 import { WelcomeContentComponent } from './welcome-content/welcome-content.component';
 import { ButtonsComponent } from './buttons/buttons.component';
 import { LoginComponent } from './login/login.component';
@@ -19,7 +18,7 @@ import { HomeComponent } from './home/home.component';
 import { AuthInterceptor } from './auth.interceptor';
 
 @NgModule({
-  declarations: [AppComponent, ProductsTableComponent, ProductCreatorComponent, ProductUpdateComponent, HeaderComponent, AuthContentComponent, WelcomeContentComponent, ButtonsComponent, LoginComponent, NavbarComponent, HomeComponent],
+  declarations: [AppComponent, ProductsTableComponent, ProductCreatorComponent, ProductUpdateComponent, HeaderComponent, WelcomeContentComponent, ButtonsComponent, LoginComponent, NavbarComponent, HomeComponent],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule, BrowserAnimationsModule, MatTabsModule ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
