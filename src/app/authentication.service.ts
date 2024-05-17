@@ -27,22 +27,24 @@ export class AuthenticationService {
   }
 
   logout(): Observable<any> {
-    const token = this.getToken();
-    const headers = new HttpHeaders().append('Authorization', `Bearer ${token}`);
-    console.log("LPOGOUTTTT" + token);
+    const token = localStorage.getItem("token") ?? '';
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': 'Bearer ' + token,
+        'Content-Type': 'application/json'
+      })
+    };
     if (token) {
-      console.log("LPOGOUTTTT STARTED");
-      return this.http.post<any>('http://localhost:8080/auth/logout', {}, { headers })
+      return this.http.post<string>('http://localhost:8080/auth/logout', {}, httpOptions)
         .pipe(
+          tap(response => console.log(response)),
           switchMap(() => {
             localStorage.removeItem('token');
-            console.log("LPOGOUTTTT SUCCESS AND TOKEN ERASED");
             return of(null);
           })
         );
     } else {
-      console.log("LPOGOUTTTT FAIL");
-      return of(null);
+      return throwError(() => new Error('No token found.'));
     }
   }
 

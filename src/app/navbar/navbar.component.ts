@@ -12,7 +12,13 @@ export class NavbarComponent {
   constructor(private router: Router, private authenticationService: AuthenticationService) {}
 
   logout() {
-    this.authenticationService.logout();
+    this.authenticationService.logout()
+    .subscribe(response => {
+       console.log('Logout successful. ', response);
+     }, error => {
+      console.log('Logout failed. ', error);
+     });
+    ;
   }
 
 }
