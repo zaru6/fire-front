@@ -9,18 +9,16 @@ import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
-  {
-    path: 'app',
-    loadChildren: () => import('./app.module').then(m => m.AppModule),
-    canActivate: [AuthGuard]
-  },
-  { path: '', component: AppComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'home', component: HomeComponent },
-  { path: 'products', component: ProductsTableComponent },
-  { path: 'create-prod', component: ProductCreatorComponent },
-  { path: 'products/:id/edit', component: ProductUpdateComponent },
-  { path: '**', redirectTo: '/login' }
+  { path: '', component: AppComponent, children: [
+    { path: 'app', loadChildren: () => import('./app.module').then(m => m.AppModule) },
+    { path: 'home', component: HomeComponent },
+    { path: 'products', component: ProductsTableComponent },
+    { path: 'create-prod', component: ProductCreatorComponent },
+    { path: 'products/:id/edit', component: ProductUpdateComponent },
+    { path: '', redirectTo: '/login', pathMatch: 'full' },
+    //{ path: '**', redirectTo: '/login' }
+  ] },
+  { path: 'login', component: LoginComponent }
 ];
 
 @NgModule({

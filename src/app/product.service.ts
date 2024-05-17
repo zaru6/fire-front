@@ -13,10 +13,11 @@ export class ProductService {
   constructor(private http: HttpClient) { }
 
   getProducts(): Observable<Product[]> {
+    const token = localStorage.getItem("token");
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcmRlxb4iLCJpYXQiOjE3MTU4ODE4NzYsImV4cCI6MTcxNTg4NTQ3Nn0.sfRIiu_gQmVAe1csqWF4LnDwIWwhMHSLbRdxdmZ_i-M' 
+        'Authorization': 'Bearer ' + token // Add the token here
       })
     };
     return this.http.get<Product[]>(this.apiUrl, httpOptions);

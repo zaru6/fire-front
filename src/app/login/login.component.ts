@@ -20,10 +20,12 @@ export class LoginComponent {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
     const body = { email: formData.username, password: formData.password };
 
-    this.http.post('http://localhost:8080/auth/login', body, { headers }).subscribe(
+    this.http.post<{ token: string }>('http://localhost:8080/auth/login', body, { headers }).subscribe(
       (response) => {
         // Handle successful login
         console.log(response);
+        // Store the token in localStorage
+        localStorage.setItem('token', response.token);
         // Navigate to the products route
         this.router.navigate(['/products']);
       },

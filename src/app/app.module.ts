@@ -15,15 +15,20 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTabsModule } from '@angular/material/tabs';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
-import { AuthInterceptor } from './auth.interceptor';
 import { AuthGuard } from './auth.guard';
 
 @NgModule({
   declarations: [AppComponent, ProductsTableComponent, ProductCreatorComponent, ProductUpdateComponent, HeaderComponent, WelcomeContentComponent, ButtonsComponent, LoginComponent, NavbarComponent, HomeComponent],
-  imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule, BrowserAnimationsModule, MatTabsModule ],
+  imports: [
+    BrowserModule, 
+    HttpClientModule,
+    AppRoutingModule, 
+    FormsModule, 
+    BrowserAnimationsModule, 
+    MatTabsModule
+   ],
   providers: [
     AuthGuard,
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

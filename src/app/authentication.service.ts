@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
-import { map, catchError, tap } from 'rxjs/operators';
+import { map, catchError, tap, switchMap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
   private tokenUrl = 'http://localhost:8080/users/me';
+  private token: string | undefined;
 
   constructor(private http: HttpClient) { }
 
@@ -27,18 +28,20 @@ export class AuthenticationService {
 
   logout(): Observable<any> {
     const token = this.getToken();
+    const headers = new HttpHeaders().append('Authorization', `Bearer ${token}`);
     console.log("LPOGOUTTTT" + token);
     if (token) {
-      return this.http.post('http://localhost:8080/auth/logout', {}, {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      }).pipe(
-        tap(() => {
-          localStorage.removeItem('token');
-        })
-      );
+      console.log("LPOGOUTTTT STARTED");
+      return this.http.post<any>('http://localhost:8080/auth/logout', {}, { headers })
+        .pipe(
+          switchMap(() => {
+            localStorage.removeItem('token');
+            console.log("LPOGOUTTTT SUCCESS AND TOKEN ERASED");
+            return of(null);
+          })
+        );
     } else {
+      console.log("LPOGOUTTTT FAIL");
       return of(null);
     }
   }
@@ -50,4 +53,9 @@ export class AuthenticationService {
   getToken(): string {
     return localStorage.getItem('token') ?? '';
   }
+
+  setToken(token: string): void {
+    this.token = token;
+  }
+
 }
