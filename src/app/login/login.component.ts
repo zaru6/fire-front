@@ -27,7 +27,7 @@ export class LoginComponent {
         // Store the token in localStorage
         localStorage.setItem('token', response.token);
         // Navigate to the products route
-        this.router.navigate(['/products']);
+        this.router.navigate(['/home']);
       },
       (error) => {
         // Handle error during login
