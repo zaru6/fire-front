@@ -1,5 +1,5 @@
 <app-navbar></app-navbar>
-<table border="1">
+<table class="product-table">
   <thead>
     <tr>
       <th>ID</th>
@@ -16,9 +16,10 @@
       <td>{{ product.price }}</td>
       <td>{{ product.available }}</td>
       <td>
-        <button (click)="onUpdateProduct(product)">Update</button>
-        <button (click)="deleteProduct(product.id)">Delete</button>
+        <button class="action-button" (click)="onUpdateProduct(product)">Update</button>
+        <button class="action-button" (click)="deleteProduct(product.id)">Delete</button>
       </td>
     </tr>
   </tbody>
 </table>
+<button routerLink="/create-prod" class="create-button">Create Product</button>

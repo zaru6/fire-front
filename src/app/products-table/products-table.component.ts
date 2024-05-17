@@ -23,7 +23,6 @@ export class ProductsTableComponent implements OnInit {
   }
 
   deleteProduct(productId: number) {
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.authenticationService.getToken()}`);
     this.productService.deleteProduct(productId).subscribe(
       () => {
         console.log("Product deleted successfully");

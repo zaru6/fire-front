@@ -28,7 +28,13 @@ export class ProductService {
   }
 
   addProduct(product: Product) {
-    return this.http.post(this.apiUrl, product);
+    const token = localStorage.getItem("token");
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': 'Bearer ' + token // Add the token here
+      })
+    };
+    return this.http.post(this.apiUrl, product, httpOptions);
   }
 
   updateProduct(product: Product) {
@@ -36,6 +42,12 @@ export class ProductService {
   }
 
   deleteProduct(id: number) {
-    return this.http.delete(`${this.apiUrl}/${id}`);
+    const token = localStorage.getItem("token");
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': 'Bearer ' + token // Add the token here
+      })
+    };
+    return this.http.delete(`${this.apiUrl}/${id}`, httpOptions);
   }
 }
