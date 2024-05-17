@@ -15,8 +15,10 @@ export class NavbarComponent {
     this.authenticationService.logout()
     .subscribe(response => {
        console.log('Logout successful. ', response);
-     }, error => {
+       this.router.navigate(['/login']);
+      }, error => {
       console.log('Logout failed. ', error);
+      this.router.navigate(['/login']);
      });
     ;
   }

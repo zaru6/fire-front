@@ -1,28 +1,21 @@
 import { ActivatedRouteSnapshot, CanActivateChild, CanActivateFn } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { CanActivate, Router, RouterStateSnapshot } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { AuthenticationService } from './authentication.service';
 
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class AuthGuard implements CanActivate {
-  constructor(private authenticationService: AuthenticationService, private router: Router) { }
+  constructor(private router: Router) {}
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    console.log("AUTH AAAAAAAAAAAa");
-    if (this.authenticationService.isAuthenticated()) {
-      return true;
-    }
-
-    const token = localStorage.getItem('token');
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
+    const token = localStorage.getItem("token") ?? '';
     if (token) {
-      this.authenticationService.setToken(token);
-      return true;
+      return of(true);
     } else {
-      return false;
+      this.router.navigate(['/login']);
+      return of(false);
     }
   }
 }
