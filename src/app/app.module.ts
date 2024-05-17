@@ -8,7 +8,6 @@ import { ProductCreatorComponent } from './product-creator/product-creator.compo
 import { FormsModule } from '@angular/forms';
 import { ProductUpdateComponent } from './product-update/product-update.component';
 import { HeaderComponent } from './header/header.component';
-import { WelcomeContentComponent } from './welcome-content/welcome-content.component';
 import { ButtonsComponent } from './buttons/buttons.component';
 import { LoginComponent } from './login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -18,7 +17,7 @@ import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './auth.guard';
 
 @NgModule({
-  declarations: [AppComponent, ProductsTableComponent, ProductCreatorComponent, ProductUpdateComponent, HeaderComponent, WelcomeContentComponent, ButtonsComponent, LoginComponent, NavbarComponent, HomeComponent],
+  declarations: [AppComponent, ProductsTableComponent, ProductCreatorComponent, ProductUpdateComponent, HeaderComponent, ButtonsComponent, LoginComponent, NavbarComponent, HomeComponent],
   imports: [
     BrowserModule, 
     HttpClientModule,
