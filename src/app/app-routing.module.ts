@@ -7,6 +7,7 @@ import { ProductUpdateComponent } from './product-update/product-update.componen
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './auth.guard';
+import { ModelsComponent } from './models/models.component';
 
 const routes: Routes = [
   { path: '', component: AppComponent, children: [
@@ -15,6 +16,7 @@ const routes: Routes = [
     { path: 'products', component: ProductsTableComponent, canActivate: [AuthGuard] },
     { path: 'create-prod', component: ProductCreatorComponent, canActivate: [AuthGuard] },
     { path: 'products/:id/edit', component: ProductUpdateComponent, canActivate: [AuthGuard] },
+    { path: 'models', component: ModelsComponent, canActivate: [AuthGuard] },
     { path: '', redirectTo: '/login', pathMatch: 'full' },
     //{ path: '**', redirectTo: '/login' }
   ] },

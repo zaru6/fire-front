@@ -15,9 +15,10 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './auth.guard';
+import { ModelsComponent } from './models/models.component';
 
 @NgModule({
-  declarations: [AppComponent, ProductsTableComponent, ProductCreatorComponent, ProductUpdateComponent, HeaderComponent, ButtonsComponent, LoginComponent, NavbarComponent, HomeComponent],
+  declarations: [AppComponent, ProductsTableComponent, ProductCreatorComponent, ProductUpdateComponent, HeaderComponent, ButtonsComponent, LoginComponent, NavbarComponent, HomeComponent, ModelsComponent],
   imports: [
     BrowserModule, 
     HttpClientModule,
