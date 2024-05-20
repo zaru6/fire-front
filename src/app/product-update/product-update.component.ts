@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from '../product.service';
 import { Product } from '../product.model';
 
@@ -14,11 +14,12 @@ export class ProductUpdateComponent {
     id: 0,
     name: '',
     price: 0,
+    subcategoryId: 0,
     available: false
   };
   productId!: number;
 
-  constructor(private route: ActivatedRoute, private productService: ProductService) { }
+  constructor(private route: ActivatedRoute, private productService: ProductService, private router: Router) { }
 
   ngOnInit(): void {
     this.product.id = +this.route.snapshot.paramMap.get('id')!;
@@ -29,6 +30,7 @@ export class ProductUpdateComponent {
     this.productService.updateProduct(this.product)
     .subscribe(response => {
       this.productMessage = 'Object update successful';
+      this.router.navigate(['/products']);
     }, error => {
       this.productMessage = 'Object update failed';
     });;

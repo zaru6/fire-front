@@ -38,7 +38,13 @@ export class ProductService {
   }
 
   updateProduct(product: Product) {
-    return this.http.put(`${this.apiUrl}/${product.id}`, product);
+    const token = localStorage.getItem("token");
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': 'Bearer ' + token // Add the token here
+      })
+    };
+    return this.http.put(`${this.apiUrl}/${product.id}`, product, httpOptions);
   }
 
   deleteProduct(id: number) {

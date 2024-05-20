@@ -12,6 +12,7 @@ export class ProductCreatorComponent {
     id: 0,
     name: '',
     price: 0,
+    subcategoryId: 0,
     available: false
   };
   productMessage: string = '';
