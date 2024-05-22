@@ -18,12 +18,20 @@
     <mat-tab label="Register">
         <form #registerForm="ngForm" class="center-form" (ngSubmit)="onRegister(registerForm.value)">
             <div class="form-element">
-                <label for="newUsername">New username:</label>
+                <label for="newUsername">Username:</label>
                 <input type="text" id="newUsername" name="newUsername" [(ngModel)]="newUsername" required>
             </div>
             <div class="form-element">
-                <label for="newPassword">New full name:</label>
-                <input type="fullName" id="newFullName" name="newFullName" [(ngModel)]="newFullName" required>
+                <label for="newPassword">First name:</label>
+                <input type="firstName" id="newFirstName" name="newFirstName" [(ngModel)]="newFirstName" required>
+            </div>
+            <div class="form-element">
+                <label for="newPassword">Last name:</label>
+                <input type="lastName" id="newLastName" name="newLastName" [(ngModel)]="newLastName" required>
+            </div>
+            <div class="form-element">
+                <label for="newPassword">Email:</label>
+                <input type="email" id="newEmail" name="newEmail" [(ngModel)]="newEmail" required>
             </div>
             <div class="form-element">
                 <label for="newPassword">New password:</label>

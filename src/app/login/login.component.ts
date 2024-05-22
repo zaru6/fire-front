@@ -11,14 +11,16 @@ export class LoginComponent {
   username = '';
   password = '';
   newUsername = '';
+  newFirstName = '';
+  newLastName = '';
+  newEmail = '';
   newPassword = '';
-  newFullName = '';
 
   constructor(private http: HttpClient, private router: Router) { }
 
   onSubmit(formData: any) {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
-    const body = { email: formData.username, password: formData.password };
+    const body = { username: formData.username, password: formData.password };
 
     this.http.post<{ token: string }>('http://localhost:8080/auth/login', body, { headers }).subscribe(
       (response) => {
@@ -38,7 +40,18 @@ export class LoginComponent {
 
   onRegister(formData: any) {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
-    const body = { email: formData.newUsername, fullName: formData.newFullName, password: formData.newPassword };
+    console.log(formData.newUsername);
+    console.log(formData.newFirstName);
+    console.log(formData.newLastName);
+    console.log(formData.newEmail);
+    console.log(formData.newPassword);
+
+    const body = { 
+      username: formData.newUsername, 
+      firstName: formData.newFirstName, 
+      lastName: formData.newLastName, 
+      email: formData.newEmail, 
+      password: formData.newPassword };
 
     this.http.post('http://localhost:8080/auth/signup', body, { headers }).subscribe(
       (response) => {
