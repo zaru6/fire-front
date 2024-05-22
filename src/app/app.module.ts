@@ -1,10 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { ProductsTableComponent } from './products-table/products-table.component';
 import { AppRoutingModule } from './app-routing.module';
-import { ProductCreatorComponent } from './product-creator/product-creator.component';
 import { FormsModule } from '@angular/forms';
 import { ProductUpdateComponent } from './product-update/product-update.component';
 import { HeaderComponent } from './header/header.component';
@@ -19,7 +18,17 @@ import { ModelsComponent } from './models/models.component';
 import { ProductFormComponent } from './product-form/product-form.component';
 
 @NgModule({
-  declarations: [AppComponent, ProductsTableComponent, ProductCreatorComponent, ProductUpdateComponent, HeaderComponent, ButtonsComponent, LoginComponent, NavbarComponent, HomeComponent, ModelsComponent, ProductFormComponent],
+  declarations: [
+    AppComponent, 
+    ProductsTableComponent, 
+    ProductUpdateComponent, 
+    HeaderComponent, 
+    ButtonsComponent, 
+    LoginComponent, 
+    NavbarComponent, 
+    HomeComponent, 
+    ModelsComponent, 
+    ProductFormComponent],
   imports: [
     BrowserModule, 
     HttpClientModule,
