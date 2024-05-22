@@ -1,10 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-
-export interface Notification {
-  message: string;
-  type: 'success' | 'error' | 'info' | 'warning';
-}
+import { Notification } from './notification.interface'; // Interface moved to a separate file
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +14,14 @@ export class NotificationsService {
   add(notification: Notification) {
     const currentNotifications = this.notificationsSubject.value;
     this.notificationsSubject.next([...currentNotifications, notification]);
+
+    // Auto-dismiss the notification after 5 seconds
+    setTimeout(() => this.remove(notification), 5000);
+  }
+
+  remove(notificationToRemove: Notification) {
+    const currentNotifications = this.notificationsSubject.value;
+    this.notificationsSubject.next(currentNotifications.filter(notification => notification !== notificationToRemove));
   }
 
   clear() {

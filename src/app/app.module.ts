@@ -36,7 +36,8 @@ import { NotificationComponent } from './notification/notification.component';
     AppRoutingModule, 
     FormsModule, 
     BrowserAnimationsModule, 
-    MatTabsModule
+    MatTabsModule,
+    BrowserAnimationsModule 
    ],
   providers: [
     AuthGuard,

@@ -1,3 +1,4 @@
-<div *ngFor="let notification of notifications" class="notification" [ngClass]="notification.type">
+<div *ngFor="let notification of notifications; trackBy: trackByFn" class="notification" [ngClass]="notification.type"
+    [@slideInOut]>
     {{ notification.message }}
 </div>

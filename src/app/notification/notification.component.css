@@ -3,6 +3,14 @@
     margin: 1em 0;
     border-radius: 5px;
     color: #fff;
+    opacity: 1;
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    width: 300px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
 }
 
 .notification.success {
@@ -19,4 +27,20 @@
 
 .notification.warning {
     background-color: #ff9800;
+}
+
+.notification.ng-enter {
+    transform: translateX(100%);
+}
+
+.notification.ng-enter-active {
+    transform: translateX(0);
+}
+
+.notification.ng-leave {
+    opacity: 1;
+}
+
+.notification.ng-leave-active {
+    opacity: 0;
 }
