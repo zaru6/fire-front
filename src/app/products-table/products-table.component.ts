@@ -47,6 +47,9 @@ export class ProductsTableComponent implements OnInit {
 
   openModal(): void {
     const modalRef = this.modalService.open(ProductFormComponent);
+    modalRef.componentInstance.closeButtonClick.subscribe(() => {
+      modalRef.close();
+    });
     modalRef.result.then(
       result => {
         console.log('Closed with:', result);

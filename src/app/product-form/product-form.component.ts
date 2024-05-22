@@ -1,5 +1,5 @@
 // product-form.component.ts
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Product } from '../product.model';
 import { ProductService } from '../product.service';
 import { Router } from '@angular/router';
@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./product-form.component.css']
 })
 export class ProductFormComponent implements OnInit {
+  @Output() closeButtonClick = new EventEmitter();
+
   product: Product = {
     id: 0,
     name: '',
@@ -32,6 +34,10 @@ export class ProductFormComponent implements OnInit {
       }, error => {
         this.productMessage = 'Object insertion failed';
       });
+  }
+
+  closeModal() {
+    this.closeButtonClick.emit();
   }
 
 
