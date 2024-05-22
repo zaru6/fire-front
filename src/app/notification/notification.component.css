@@ -1,0 +1,22 @@
+.notification {
+    padding: 1em;
+    margin: 1em 0;
+    border-radius: 5px;
+    color: #fff;
+}
+
+.notification.success {
+    background-color: #4caf50;
+}
+
+.notification.error {
+    background-color: #f44336;
+}
+
+.notification.info {
+    background-color: #2196f3;
+}
+
+.notification.warning {
+    background-color: #ff9800;
+}

@@ -16,6 +16,7 @@ import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './auth.guard';
 import { ModelsComponent } from './models/models.component';
 import { ProductFormComponent } from './product-form/product-form.component';
+import { NotificationComponent } from './notification/notification.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { ProductFormComponent } from './product-form/product-form.component';
     NavbarComponent, 
     HomeComponent, 
     ModelsComponent, 
-    ProductFormComponent],
+    ProductFormComponent, NotificationComponent],
   imports: [
     BrowserModule, 
     HttpClientModule,
