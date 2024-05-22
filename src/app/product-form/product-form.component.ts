@@ -27,6 +27,10 @@ export class ProductFormComponent implements OnInit {
   }
 
   addProduct(product: Product) {
+    if (product.name === '') {
+      console.log('Product name is required');
+      return;
+    }
     this.productService.addProduct(product)
       .subscribe(response => {
         this.productMessage = 'Object insertion successful';
@@ -34,6 +38,8 @@ export class ProductFormComponent implements OnInit {
       }, error => {
         this.productMessage = 'Object insertion failed';
       });
+    location.reload(); // Refresh the page
+
   }
 
   closeModal() {

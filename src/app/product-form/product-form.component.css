@@ -37,3 +37,16 @@ button[type="submit"] {
 button[type="submit"]:hover {
     background-color: #555;
 }
+
+button[type="close"] {
+    background-color: #686666;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button[type="close"]:hover {
+    background-color: #7e7b7b;
+}
