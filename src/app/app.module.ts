@@ -16,9 +16,10 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './auth.guard';
 import { ModelsComponent } from './models/models.component';
+import { ProductFormComponent } from './product-form/product-form.component';
 
 @NgModule({
-  declarations: [AppComponent, ProductsTableComponent, ProductCreatorComponent, ProductUpdateComponent, HeaderComponent, ButtonsComponent, LoginComponent, NavbarComponent, HomeComponent, ModelsComponent],
+  declarations: [AppComponent, ProductsTableComponent, ProductCreatorComponent, ProductUpdateComponent, HeaderComponent, ButtonsComponent, LoginComponent, NavbarComponent, HomeComponent, ModelsComponent, ProductFormComponent],
   imports: [
     BrowserModule, 
     HttpClientModule,

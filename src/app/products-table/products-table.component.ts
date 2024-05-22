@@ -4,6 +4,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ProductService } from '../product.service';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../authentication.service';
+import { ProductFormComponent } from '../product-form/product-form.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-products-table',
@@ -14,7 +16,12 @@ export class ProductsTableComponent implements OnInit {
   products: Product[] = [];
   productMessage: string = '';
 
-  constructor(private productService: ProductService, private http: HttpClient, private router: Router, private authenticationService: AuthenticationService) { }
+  constructor(
+    private productService: ProductService, 
+    private http: HttpClient, 
+    private router: Router, 
+    private authenticationService: AuthenticationService,
+    private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.productService.getProducts().subscribe(products => {
@@ -36,5 +43,17 @@ export class ProductsTableComponent implements OnInit {
 
   onUpdateProduct(product: Product) {
     this.router.navigate(['/products', product.id, 'edit']);
+  }
+
+  openModal(): void {
+    const modalRef = this.modalService.open(ProductFormComponent);
+    modalRef.result.then(
+      result => {
+        console.log('Closed with:', result);
+      },
+      reason => {
+        console.log('Dismissed', reason);
+      }
+    );
   }
 }
