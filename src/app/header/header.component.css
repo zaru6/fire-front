@@ -1,5 +1,6 @@
 .app-logo {
     height: 80px;
+    cursor: pointer; /* Add this rule */
 }
 
 .app-header {
