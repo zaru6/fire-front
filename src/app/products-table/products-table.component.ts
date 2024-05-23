@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { AuthenticationService } from '../authentication.service';
 import { ProductFormComponent } from '../product-form/product-form.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { UploadComponent } from '../upload/upload.component';
 
 @Component({
   selector: 'app-products-table',
@@ -49,8 +50,23 @@ export class ProductsTableComponent implements OnInit {
     this.router.navigate(['/products', product.id, 'edit']);
   }
 
-  openModal(): void {
+  openProductForm(): void {
     const modalRef = this.modalService.open(ProductFormComponent);
+    modalRef.componentInstance.closeButtonClick.subscribe(() => {
+      modalRef.close();
+    });
+    modalRef.result.then(
+      result => {
+        console.log('Closed with:', result);
+      },
+      reason => {
+        console.log('Dismissed', reason);
+      }
+    );
+  }
+
+  openUploadForm(): void {
+    const modalRef = this.modalService.open(UploadComponent);
     modalRef.componentInstance.closeButtonClick.subscribe(() => {
       modalRef.close();
     });

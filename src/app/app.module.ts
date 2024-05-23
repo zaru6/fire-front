@@ -17,6 +17,7 @@ import { AuthGuard } from './auth.guard';
 import { ModelsComponent } from './models/models.component';
 import { ProductFormComponent } from './product-form/product-form.component';
 import { NotificationComponent } from './notification/notification.component';
+import { UploadComponent } from './upload/upload.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import { NotificationComponent } from './notification/notification.component';
     NavbarComponent, 
     HomeComponent, 
     ModelsComponent, 
-    ProductFormComponent, NotificationComponent],
+    ProductFormComponent, NotificationComponent, UploadComponent],
   imports: [
     BrowserModule, 
     HttpClientModule,
