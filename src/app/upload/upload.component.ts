@@ -41,7 +41,7 @@ export class UploadComponent {
         observe: 'events' as const
       };
 
-      this.http.post(this.apiUrl, formData, httpOptions).subscribe({
+      this.http.post(this.apiUrl, formData, httpOptions).subscribe({ // IMPORTANT TODO: check errors in console!!!!
         next: (event) => {
           if (event.type === HttpEventType.UploadProgress) {
             const total = event.total || 1; // Fallback to 1 to avoid division by zero
