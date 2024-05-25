@@ -18,6 +18,7 @@ import { ModelsComponent } from './models/models.component';
 import { ProductFormComponent } from './product-form/product-form.component';
 import { NotificationComponent } from './notification/notification.component';
 import { UploadComponent } from './upload/upload.component';
+import { ProductFormUpdateComponent } from './product-form-update/product-form-update.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,7 @@ import { UploadComponent } from './upload/upload.component';
     NavbarComponent, 
     HomeComponent, 
     ModelsComponent, 
-    ProductFormComponent, NotificationComponent, UploadComponent],
+    ProductFormComponent, NotificationComponent, UploadComponent, ProductFormUpdateComponent],
   imports: [
     BrowserModule, 
     HttpClientModule,
