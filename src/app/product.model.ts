@@ -4,4 +4,7 @@ export interface Product {
     price: number;
     subcategoryId: number;
     available: boolean;
+    createdBy: number;
+    createdAt: Date;
+    updatedAt: Date;
 }

@@ -17,7 +17,10 @@ export class ProductFormComponent implements OnInit {
     name: '',
     price: 0,
     subcategoryId: 0,
-    available: false
+    available: false,
+    createdBy: 0,
+    createdAt: new Date,
+    updatedAt: new Date
   };
   productMessage: string = '';
 

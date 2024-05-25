@@ -15,7 +15,10 @@ export class ProductUpdateComponent {
     name: '',
     price: 0,
     subcategoryId: 0,
-    available: false
+    available: false,
+    createdBy: 0,
+    createdAt: new Date,
+    updatedAt: new Date
   };
   productId!: number;
 
