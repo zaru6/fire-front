@@ -12,6 +12,7 @@ export class ProductFormUpdateComponent {
   @Input()
   product!: Product; // Input property to receive the product
   @Output() closeButtonClick = new EventEmitter();
+  update: boolean = true;
 
   productMessage: string = '';
 
@@ -21,6 +22,10 @@ export class ProductFormUpdateComponent {
   }
 
   updateProduct(product: Product) {
+    if (this.update == false) {
+      console.log('Product not updated');
+      return;
+    }
     this.productService.updateProduct(this.product)
     .subscribe(response => {
       this.productMessage = 'Object update successful';
@@ -31,6 +36,7 @@ export class ProductFormUpdateComponent {
   }
 
   closeModal() {
+    this.update = false;
     this.closeButtonClick.emit();
   }
 }
