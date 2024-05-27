@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component, ViewChild, ElementRef, EventEmitter, Output } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpEventType, HttpHeaders, HttpResponse } from '@angular/common/http';
 
 @Component({
@@ -7,6 +7,7 @@ import { HttpClient, HttpErrorResponse, HttpEventType, HttpHeaders, HttpResponse
   styleUrls: ['./upload.component.css']
 })
 export class UploadComponent {
+  @Output() closeButtonClick = new EventEmitter();
   @ViewChild('fileInput') fileInput!: ElementRef;
   fileName: string = '';
   file?: File;
@@ -55,6 +56,11 @@ export class UploadComponent {
           console.error('Upload failed:', err.message);
         }
       });
+      location.reload(); // Refresh the page
     }
+  }
+
+  closeModal() {
+    this.closeButtonClick.emit();
   }
 }

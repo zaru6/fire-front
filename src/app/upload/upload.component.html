@@ -1,4 +1,5 @@
 <button (click)="onUploadClick()">Upload CSV</button>
+<button type="close" class="btn btn-primary" (click)="closeModal()">Close</button>
 <input type="file" #fileInput accept=".csv" (change)="onFileSelected($event)" style="display: none;">
 <p *ngIf="fileName">{{ fileName }}</p>
 <button *ngIf="file" (click)="onSubmit()">Submit File</button>
