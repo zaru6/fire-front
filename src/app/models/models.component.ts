@@ -14,6 +14,7 @@ import { Subcategory } from '../subcategory.model';
   styleUrl: './models.component.css'
 })
 export class ModelsComponent {
+  selectedIndex = 0;
   products: Product[] = [];
   categories: Category[] = [];
   subcategories: Subcategory[] = [];
@@ -35,5 +36,9 @@ export class ModelsComponent {
     this.modelService.getSubcategories().subscribe(subcategories => {
       this.subcategories = subcategories;
     });
+  }
+
+  selectTab(index: number) {
+    this.selectedIndex = index;
   }
 }

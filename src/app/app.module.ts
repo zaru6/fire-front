@@ -19,6 +19,8 @@ import { ProductFormComponent } from './product-form/product-form.component';
 import { NotificationComponent } from './notification/notification.component';
 import { UploadComponent } from './upload/upload.component';
 import { ProductFormUpdateComponent } from './product-form-update/product-form-update.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import { ProductFormUpdateComponent } from './product-form-update/product-form-u
     FormsModule, 
     BrowserAnimationsModule, 
     MatTabsModule,
+    MatSidenavModule,
+    MatListModule,
     BrowserAnimationsModule 
    ],
   providers: [

@@ -1,5 +1,27 @@
+.sidenav-container {
+    display: flex;
+    height: 100vh;
+}
+
+.sidenav {
+    width: 200px;
+}
+
+.mat-sidenav-content {
+    display: flex;
+    justify-content: center;
+    /* Center content horizontally */
+    padding: 20px;
+}
+
+.tab-content {
+    width: 100%;
+    max-width: 800px;
+    /* Adjust the max-width as needed */
+}
+
 .basic-table {
-    width: 50%;
+    width: 100%;
     border-collapse: collapse;
     margin: 20px auto;
 }
@@ -16,20 +38,19 @@
     color: #fff;
 }
 
-/* Style the Angular Material tabs */
-.mat-tab-group {
-    margin: 20px auto;
-    width: 80%;
-}
-
-.mat-tab-label {
-    background-color: #f8f8f8;
-    color: #333;
+.tab-link {
+    cursor: pointer;
     padding: 10px;
-    margin-right: 5px;
+    display: block;
+    color: #333;
+    text-decoration: none;
 }
 
-.mat-tab-label-active {
+.tab-link:hover {
+    background-color: #ddd;
+}
+
+.tab-link.active {
     background-color: #830000;
     color: #fff;
 }

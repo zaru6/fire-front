@@ -1,63 +1,73 @@
 <app-navbar></app-navbar>
-<mat-tab-group>
-  <mat-tab label="Products">
-    <table class="basic-table">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Name</th>
-          <th>Price</th>
-          <th>Subcategory ID</th>
-          <th>Available</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let product of products">
-          <td>{{ product.id }}</td>
-          <td>{{ product.name }}</td>
-          <td>{{ product.price }}</td>
-          <td>{{ product.subcategoryId }}</td>
-          <td>{{ product.available }}</td>
-        </tr>
-      </tbody>
-    </table>
-  </mat-tab>
-  <mat-tab label="Categories">
-    <table class="basic-table">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Name</th>
-          <th>Label</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let category of categories">
-          <td>{{ category.id }}</td>
-          <td>{{ category.name }}</td>
-          <td>{{ category.label }}</td>
-        </tr>
-      </tbody>
-    </table>
-  </mat-tab>
-  <mat-tab label="Subcategories">
-    <table class="basic-table">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Name</th>
-          <th>Label</th>
-          <th>Subcategory ID</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let subcategory of subcategories">
-          <td>{{ subcategory.id }}</td>
-          <td>{{ subcategory.name }}</td>
-          <td>{{ subcategory.label }}</td>
-          <td>{{ subcategory.categoryId }}</td>
-        </tr>
-      </tbody>
-    </table>
-  </mat-tab>
-</mat-tab-group>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav mode="side" opened class="sidenav">
+    <mat-nav-list>
+      <mat-list-item class="tab-link" [class.active]="selectedIndex === 0" (click)="selectTab(0)">Products</mat-list-item>
+      <mat-list-item class="tab-link" [class.active]="selectedIndex === 1" (click)="selectTab(1)">Categories</mat-list-item>
+      <mat-list-item class="tab-link" [class.active]="selectedIndex === 2" (click)="selectTab(2)">Subcategories</mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div *ngIf="selectedIndex === 0" class="tab-content">
+      <table class="basic-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Subcategory ID</th>
+            <th>Available</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of products">
+            <td>{{ product.id }}</td>
+            <td>{{ product.name }}</td>
+            <td>{{ product.price }}</td>
+            <td>{{ product.subcategoryId }}</td>
+            <td>{{ product.available }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div *ngIf="selectedIndex === 1" class="tab-content">
+      <table class="basic-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Label</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let category of categories">
+            <td>{{ category.id }}</td>
+            <td>{{ category.name }}</td>
+            <td>{{ category.label }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div *ngIf="selectedIndex === 2" class="tab-content">
+      <table class="basic-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Label</th>
+            <th>Category ID</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let subcategory of subcategories">
+            <td>{{ subcategory.id }}</td>
+            <td>{{ subcategory.name }}</td>
+            <td>{{ subcategory.label }}</td>
+            <td>{{ subcategory.categoryId }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
