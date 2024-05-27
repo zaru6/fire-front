@@ -6,12 +6,14 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './auth.guard';
 import { ModelsComponent } from './models/models.component';
+import { ProductdtosComponent } from './productdtos/productdtos.component';
 
 const routes: Routes = [
   { path: '', component: AppComponent, children: [
     { path: 'app', loadChildren: () => import('./app.module').then(m => m.AppModule) },
     { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
     { path: 'products', component: ProductsTableComponent, canActivate: [AuthGuard] },
+    { path: 'products-dto', component: ProductdtosComponent, canActivate: [AuthGuard] },
     //{ path: 'products/:id/edit', component: ProductUpdateComponent, canActivate: [AuthGuard] },
     { path: 'models', component: ModelsComponent, canActivate: [AuthGuard] },
     { path: '', redirectTo: '/login', pathMatch: 'full' },

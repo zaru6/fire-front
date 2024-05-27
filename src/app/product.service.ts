@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Product } from './product.model';
 import { Observable } from 'rxjs';
+import { ProductDTO } from './productdto.model';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,7 @@ import { Observable } from 'rxjs';
 export class ProductService {
 
   private apiUrl = 'http://localhost:8080/api/products';
+  private dtoApiUrl = 'http://localhost:8080/api/products/table';
 
   constructor(private http: HttpClient) { }
 
@@ -25,6 +27,17 @@ export class ProductService {
 
   getProduct(id: number): Observable<Product> {
     return this.http.get<Product>(`${this.apiUrl}/${id}`);
+  }
+
+  getProductDtos(): Observable<ProductDTO[]> {
+    const token = localStorage.getItem("token");
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token // Add the token here
+      })
+    };
+    return this.http.get<ProductDTO[]>(this.dtoApiUrl, httpOptions);
   }
 
   addProduct(product: Product) {

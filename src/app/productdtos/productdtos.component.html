@@ -1,0 +1,36 @@
+<app-navbar></app-navbar>
+<table class="product-table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Category</th>
+      <th>Subcategory</th>
+      <th>Available</th>
+      <th>Created by</th>
+      <th>Created at</th>
+      <th>Updated at</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of products">
+      <td>{{ product.id }}</td>
+      <td>{{ product.name }}</td>
+      <td>{{ product.price }}</td>
+      <td>{{ product.categoryLabel }}</td>
+      <td>{{ product.subcategoryLabel }}</td>
+      <td>{{ product.available }}</td>
+      <td>{{ product.createdBy }}</td>
+      <td>{{ product.createdAt | date: 'medium' }}</td>
+      <td>{{ product.updatedAt | date: 'medium' }}</td>
+      <td>
+        <!--button class="action-button" (click)="onUpdateProduct(product)">Update</button>
+        <button class="action-button" (click)="deleteProduct(product.id)">Delete</button-->
+      </td>
+    </tr>
+  </tbody>
+</table>
+<!--button class="create-button" type="create" (click)="openProductForm()">Create Product</button>
+<button class="create-button" type="create" (click)="openUploadForm()">Import CSV</button-->

@@ -20,6 +20,7 @@ import { UploadComponent } from './upload/upload.component';
 import { ProductFormUpdateComponent } from './product-form-update/product-form-update.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { ProductdtosComponent } from './productdtos/productdtos.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import { MatListModule } from '@angular/material/list';
     ProductFormComponent, 
     NotificationComponent, 
     UploadComponent, 
-    ProductFormUpdateComponent],
+    ProductFormUpdateComponent, ProductdtosComponent],
   imports: [
     BrowserModule, 
     HttpClientModule,
