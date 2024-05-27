@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { ProductsTableComponent } from './products-table/products-table.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
-import { ProductUpdateComponent } from './product-update/product-update.component';
 import { HeaderComponent } from './header/header.component';
 import { ButtonsComponent } from './buttons/buttons.component';
 import { LoginComponent } from './login/login.component';
@@ -26,14 +25,16 @@ import { MatListModule } from '@angular/material/list';
   declarations: [
     AppComponent, 
     ProductsTableComponent, 
-    ProductUpdateComponent, 
     HeaderComponent, 
     ButtonsComponent, 
     LoginComponent, 
     NavbarComponent, 
     HomeComponent, 
     ModelsComponent, 
-    ProductFormComponent, NotificationComponent, UploadComponent, ProductFormUpdateComponent],
+    ProductFormComponent, 
+    NotificationComponent, 
+    UploadComponent, 
+    ProductFormUpdateComponent],
   imports: [
     BrowserModule, 
     HttpClientModule,

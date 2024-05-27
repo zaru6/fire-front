@@ -3,6 +3,8 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Product } from '../product.model';
 import { ProductService } from '../product.service';
 import { Router } from '@angular/router';
+import { ModelService } from '../model.service';
+import { Subcategory } from '../subcategory.model';
 
 @Component({
   selector: 'app-product-form',
@@ -11,6 +13,7 @@ import { Router } from '@angular/router';
 })
 export class ProductFormComponent implements OnInit {
   @Output() closeButtonClick = new EventEmitter();
+  subcategories: Subcategory[] = [];
 
   product: Product = {
     id: 0,
@@ -24,9 +27,15 @@ export class ProductFormComponent implements OnInit {
   };
   productMessage: string = '';
 
-  constructor(private productService: ProductService, private router: Router) { }
+  constructor(
+    private productService: ProductService, 
+    private modelService: ModelService, 
+    private router: Router) { }
 
   ngOnInit(): void {
+    this.modelService.getSubcategories().subscribe(subcategories => {
+      this.subcategories = subcategories;
+    });
   }
 
   addProduct(product: Product) {

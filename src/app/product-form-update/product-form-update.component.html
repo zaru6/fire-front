@@ -10,7 +10,9 @@
     </div>
     <div class="form-group">
         <label for="subcategoryId">Subcategory ID</label>
-        <input type="number" class="form-control" id="subcategoryId" [(ngModel)]="product.subcategoryId" name="subcategoryId" required>
+        <select class="form-control" id="subcategoryId" [(ngModel)]="product.subcategoryId" name="subcategoryId" required>
+            <option *ngFor="let subcategory of subcategories" [value]="subcategory.id">{{ subcategory.label }}</option>
+        </select>
     </div>
     <div class="form-group">
         <label for="available">Available</label>
