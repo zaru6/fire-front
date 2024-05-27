@@ -1,5 +1,5 @@
 <app-navbar></app-navbar>
-<table class="product-table">
+<table class="basic-table">
   <thead>
     <tr>
       <th>ID</th>
@@ -16,8 +16,40 @@
       <td>{{ product.price }}</td>
       <td>{{ product.subcategoryId }}</td>
       <td>{{ product.available }}</td>
-      <td>
-      </td>
+    </tr>
+  </tbody>
+</table>
+<table class="basic-table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Label</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let category of categories">
+      <td>{{ category.id }}</td>
+      <td>{{ category.name }}</td>
+      <td>{{ category.label }}</td>
+    </tr>
+  </tbody>
+</table>
+<table class="basic-table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Label</th>
+      <th>Subcategory ID</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let subcategory of subcategories">
+      <td>{{ subcategory.id }}</td>
+      <td>{{ subcategory.name }}</td>
+      <td>{{ subcategory.label }}</td>
+      <td>{{ subcategory.categoryId }}</td>
     </tr>
   </tbody>
 </table>
