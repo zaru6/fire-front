@@ -16,3 +16,20 @@
     color: #fff;
 }
 
+/* Style the Angular Material tabs */
+.mat-tab-group {
+    margin: 20px auto;
+    width: 80%;
+}
+
+.mat-tab-label {
+    background-color: #f8f8f8;
+    color: #333;
+    padding: 10px;
+    margin-right: 5px;
+}
+
+.mat-tab-label-active {
+    background-color: #830000;
+    color: #fff;
+}
