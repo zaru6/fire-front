@@ -1,13 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../product.model';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ProductService } from '../product.service';
-import { Router } from '@angular/router';
-import { AuthenticationService } from '../authentication.service';
 import { ProductFormComponent } from '../product-form/product-form.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UploadComponent } from '../upload/upload.component';
 import { ProductFormUpdateComponent } from '../product-form-update/product-form-update.component';
+import { ProductDTO } from '../productdto.model';
 
 @Component({
   selector: 'app-products-table',
@@ -15,22 +13,20 @@ import { ProductFormUpdateComponent } from '../product-form-update/product-form-
   styleUrls: ['./products-table.component.css']
 })
 export class ProductsTableComponent implements OnInit {
-  products: Product[] = [];
+  products: ProductDTO[] = [];
+  productForUpdate!: Product;
   productMessage: string = '';
 
   constructor(
     private productService: ProductService,
-    private http: HttpClient,
-    private router: Router,
-    private authenticationService: AuthenticationService,
     private modalService: NgbModal) { }
 
   ngOnInit(): void {
-    this.getProducts();
+    this.getProductDtos();
   }
 
-  getProducts() {
-    this.productService.getProducts().subscribe(products => {
+  getProductDtos() {
+    this.productService.getProductDtos().subscribe(products => {
       this.products = products;
     });
   }
@@ -39,7 +35,7 @@ export class ProductsTableComponent implements OnInit {
     this.productService.deleteProduct(productId).subscribe(
       () => {
         console.log("Product deleted successfully");
-        this.getProducts();
+        this.getProductDtos();
       },
       (error) => {
         console.error("Error deleting product:", error);
@@ -47,21 +43,33 @@ export class ProductsTableComponent implements OnInit {
     );
   }
 
-  onUpdateProduct(product: Product) {
-    const modalRef = this.modalService.open(ProductFormUpdateComponent);
-    modalRef.componentInstance.product = product; 
-    modalRef.componentInstance.closeButtonClick.subscribe(() => {
-      modalRef.close();
-    });
-    modalRef.result.then(
-      result => {
-        console.log('Closed with:', result);
+  onUpdateProduct(productDTO: ProductDTO) {
+    this.productService.getProduct(productDTO.id).subscribe({
+      next: (response: Product) => {
+        const product = response;
+        console.log('Fetched Product:', product);
+
+        // Open the modal after fetching the product
+        const modalRef = this.modalService.open(ProductFormUpdateComponent);
+        modalRef.componentInstance.product = product;
+        modalRef.componentInstance.closeButtonClick.subscribe(() => {
+          modalRef.close();
+        });
+        modalRef.result.then(
+          result => {
+            console.log('Closed with:', result);
+          },
+          reason => {
+            console.log('Dismissed', reason);
+          }
+        );
       },
-      reason => {
-        console.log('Dismissed', reason);
+      error: (error) => {
+        console.error('Error fetching product', error);
       }
-    );
+    });
   }
+
 
   openProductForm(): void {
     const modalRef = this.modalService.open(ProductFormComponent);
@@ -92,4 +100,5 @@ export class ProductsTableComponent implements OnInit {
       }
     );
   }
+
 }

@@ -13,7 +13,6 @@ const routes: Routes = [
     { path: 'app', loadChildren: () => import('./app.module').then(m => m.AppModule) },
     { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
     { path: 'products', component: ProductsTableComponent, canActivate: [AuthGuard] },
-    { path: 'products-dto', component: ProductdtosComponent, canActivate: [AuthGuard] },
     //{ path: 'products/:id/edit', component: ProductUpdateComponent, canActivate: [AuthGuard] },
     { path: 'models', component: ModelsComponent, canActivate: [AuthGuard] },
     { path: '', redirectTo: '/login', pathMatch: 'full' },
