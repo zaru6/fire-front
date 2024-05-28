@@ -2,13 +2,14 @@ import { Component } from '@angular/core';
 import { ProductDTO } from '../productdto.model';
 import { ProductService } from '../product.service';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from '../authentication.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UploadComponent } from '../upload/upload.component';
 import { ProductFormComponent } from '../product-form/product-form.component';
 import { ProductFormUpdateComponent } from '../product-form-update/product-form-update.component';
 import { Product } from '../product.model';
+import { lastValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-productdtos',
@@ -17,13 +18,12 @@ import { Product } from '../product.model';
 })
 export class ProductdtosComponent {
   products: ProductDTO[] = [];
+  productForUpdate!: Product;
   productMessage: string = '';
 
   constructor(
+    private route: ActivatedRoute,
     private productService: ProductService,
-    private http: HttpClient,
-    private router: Router,
-    private authenticationService: AuthenticationService,
     private modalService: NgbModal) { }
 
   ngOnInit(): void {
@@ -48,21 +48,33 @@ export class ProductdtosComponent {
     );
   }
 
-  onUpdateProduct(product: ProductDTO) {
-    const modalRef = this.modalService.open(ProductFormUpdateComponent);
-    modalRef.componentInstance.product = product; 
-    modalRef.componentInstance.closeButtonClick.subscribe(() => {
-      modalRef.close();
-    });
-    modalRef.result.then(
-      result => {
-        console.log('Closed with:', result);
+  onUpdateProduct(productDTO: ProductDTO) {
+    this.productService.getProduct(productDTO.id).subscribe({
+      next: (response: Product) => {
+        const product = response;
+        console.log('Fetched Product:', product);
+  
+        // Open the modal after fetching the product
+        const modalRef = this.modalService.open(ProductFormUpdateComponent);
+        modalRef.componentInstance.product = product;
+        modalRef.componentInstance.closeButtonClick.subscribe(() => {
+          modalRef.close();
+        });
+        modalRef.result.then(
+          result => {
+            console.log('Closed with:', result);
+          },
+          reason => {
+            console.log('Dismissed', reason);
+          }
+        );
       },
-      reason => {
-        console.log('Dismissed', reason);
+      error: (error) => {
+        console.error('Error fetching product', error);
       }
-    );
+    });
   }
+  
 
   openProductForm(): void {
     const modalRef = this.modalService.open(ProductFormComponent);
@@ -92,6 +104,10 @@ export class ProductdtosComponent {
         console.log('Dismissed', reason);
       }
     );
+  }
+
+  async getProduct(id: number): Promise<Product> {
+    return lastValueFrom(this.productService.getProduct(id));
   }
 
 }
