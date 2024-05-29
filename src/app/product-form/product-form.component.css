@@ -25,28 +25,22 @@ label {
     box-shadow: 0 0 2px 1px #333;
 }
 
-button[type="submit"] {
-    background-color: #333;
-    color: #fff;
+.button-container {
+    text-align: center; /* Center the buttons horizontally */
+}
+
+.btn {
+    background-color: #1E90FF; /* Dark Blue */
     border: none;
-    padding: 10px;
-    border-radius: 5px;
+    color: white;
+    padding: 20px 40px; /* Increased padding to make the buttons bigger */
+    text-decoration: none;
+    font-size: 16px;
+    transition-duration: 0.4s;
     cursor: pointer;
+    border-radius: 12px;
 }
 
-button[type="submit"]:hover {
-    background-color: #555;
-}
-
-button[type="close"] {
-    background-color: #686666;
-    color: #fff;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-button[type="close"]:hover {
-    background-color: #7e7b7b;
+.btn:hover {
+    opacity: 0.8; /* Reduce opacity on hover */
 }

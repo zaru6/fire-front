@@ -10,7 +10,8 @@
     </div>
     <div class="form-group">
         <label for="subcategoryId">Subcategory ID</label>
-        <select class="form-control" id="subcategoryId" [(ngModel)]="product.subcategoryId" name="subcategoryId" required>
+        <select class="form-control" id="subcategoryId" [(ngModel)]="product.subcategoryId" name="subcategoryId"
+            required>
             <option *ngFor="let subcategory of subcategories" [value]="subcategory.id">{{ subcategory.label }}</option>
         </select>
     </div>
@@ -18,6 +19,8 @@
         <label for="available">Available</label>
         <input type="checkbox" id="available" [(ngModel)]="product.available" name="available">
     </div>
-    <button type="submit" class="btn btn-primary">Save</button>
-    <button type="close" class="btn btn-primary" (click)="closeModal()">Close</button>
+    <div class="button-container">
+        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="close" class="btn btn-primary" (click)="closeModal()">Close</button>
+    </div>
 </form>

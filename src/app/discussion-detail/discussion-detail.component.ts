@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Topic } from '../topic.model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { TopicReply } from '../topic-reply.model';
 import { TopicService } from '../topic.service';
@@ -19,6 +19,7 @@ export class DiscussionDetailComponent {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private http: HttpClient,
     private topicService: TopicService,
     private topicReplyService: TopicReplyService,
@@ -77,4 +78,7 @@ export class DiscussionDetailComponent {
     this.closeButtonClick.emit();
   }
 
+  goBack() {
+    this.router.navigate(['/discussion']);
+  }
 }

@@ -49,15 +49,29 @@ h1 {
     margin-top: 10px;
 }
 
-button[type="create"] {
-    background-color: #333;
-    color: #fff;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
+.button-container {
+    text-align: center;
+    /* Center the button horizontally */
 }
 
-button[type="create"]:hover {
-    background-color: #555;
+.create-button {
+    background-color: #1E90FF;
+    /* Dark Blue */
+    border: none;
+    color: white;
+    padding: 20px 40px;
+    /* Increased padding to make the buttons bigger */
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 12px;
+}
+
+.create-button:hover {
+    opacity: 0.8;
+    /* Reduce opacity on hover */
 }
