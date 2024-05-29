@@ -21,6 +21,7 @@ import { ProductFormUpdateComponent } from './product-form-update/product-form-u
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { ProductdtosComponent } from './productdtos/productdtos.component';
+import { DiscussionComponent } from './discussion/discussion.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,7 @@ import { ProductdtosComponent } from './productdtos/productdtos.component';
     ProductFormComponent, 
     NotificationComponent, 
     UploadComponent, 
-    ProductFormUpdateComponent, ProductdtosComponent],
+    ProductFormUpdateComponent, ProductdtosComponent, DiscussionComponent],
   imports: [
     BrowserModule, 
     HttpClientModule,
