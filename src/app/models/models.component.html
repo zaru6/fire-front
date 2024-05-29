@@ -2,15 +2,31 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav mode="side" opened class="sidenav">
     <mat-nav-list>
-      <mat-list-item class="tab-link" [class.active]="selectedIndex === 0" (click)="selectTab(0)">Topics</mat-list-item>
-      <mat-list-item class="tab-link" [class.active]="selectedIndex === 1"
-        (click)="selectTab(1)">Replies</mat-list-item>
-      <mat-list-item class="tab-link" [class.active]="selectedIndex === 2"
-        (click)="selectTab(2)">Products</mat-list-item>
-      <mat-list-item class="tab-link" [class.active]="selectedIndex === 3"
-        (click)="selectTab(3)">Categories</mat-list-item>
-      <mat-list-item class="tab-link" [class.active]="selectedIndex === 4"
-        (click)="selectTab(4)">Subcategories</mat-list-item>
+      <!-- Discussion Group -->
+      <mat-list-item class="accordion-header" (click)="toggleAccordion('discussion')">
+        <span>Discussion</span>
+        <mat-icon>{{ isAccordionOpen('discussion') ? 'expand_less' : 'expand_more' }}</mat-icon>
+      </mat-list-item>
+      <div *ngIf="isAccordionOpen('discussion')">
+        <mat-list-item class="tab-link" [class.active]="selectedIndex === 0"
+          (click)="selectTab(0)">Topics</mat-list-item>
+        <mat-list-item class="tab-link" [class.active]="selectedIndex === 1"
+          (click)="selectTab(1)">Replies</mat-list-item>
+      </div>
+
+      <!-- Models Group -->
+      <mat-list-item class="accordion-header" (click)="toggleAccordion('models')">
+        <span>Models</span>
+        <mat-icon>{{ isAccordionOpen('models') ? 'expand_less' : 'expand_more' }}</mat-icon>
+      </mat-list-item>
+      <div *ngIf="isAccordionOpen('models')">
+        <mat-list-item class="tab-link" [class.active]="selectedIndex === 2"
+          (click)="selectTab(2)">Products</mat-list-item>
+        <mat-list-item class="tab-link" [class.active]="selectedIndex === 3"
+          (click)="selectTab(3)">Categories</mat-list-item>
+        <mat-list-item class="tab-link" [class.active]="selectedIndex === 4"
+          (click)="selectTab(4)">Subcategories</mat-list-item>
+      </div>
     </mat-nav-list>
   </mat-sidenav>
 

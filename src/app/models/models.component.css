@@ -1,29 +1,79 @@
+/* Sidebar Container */
 .sidenav-container {
     display: flex;
     height: 100vh;
 }
 
+/* Sidebar */
 .sidenav {
     width: 200px;
 }
 
+/* Main Content Container */
 .mat-sidenav-content {
     display: flex;
-    justify-content: center;
-    /* Center content horizontally */
+    justify-content: center; /* Center content horizontally */
     padding: 20px;
 }
 
-.tab-content {
-    width: 100%;
-    max-width: 800px;
-    /* Adjust the max-width as needed */
+/* Accordion Header */
+.accordion-header {
+    cursor: pointer;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-bottom: 1px solid #ddd;
 }
 
+/* Accordion Header Text */
+.accordion-header span {
+    margin-right: 10px; /* Add space between text and icon */
+}
+
+/* Accordion Icon */
+.accordion-icon {
+    font-size: 18px;
+    transition: transform 0.3s ease;
+}
+
+/* Expanded Accordion Icon */
+.accordion-expanded {
+    transform: rotate(180deg);
+}
+
+/* Accordion Content */
+.accordion-content {
+    display: none;
+    padding-left: 20px; /* Indent content */
+}
+
+/* Visible Accordion Content */
+.accordion-content.visible {
+    display: block;
+}
+
+/* Tab Link */
+.tab-link {
+    cursor: pointer;
+    padding: 10px 20px; /* Add padding */
+    display: block;
+    color: #333;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.tab-link:hover {
+    background-color: #f0f0f0;
+}
+
+.tab-link.active {
+    background-color: #830000;
+    color: #fff;
+}
+
+/* Basic Table */
 .basic-table {
     width: 100%;
     border-collapse: collapse;
-    margin: 20px auto;
 }
 
 .basic-table th,
@@ -34,23 +84,6 @@
 }
 
 .basic-table th {
-    background-color: #830000;
-    color: #fff;
-}
-
-.tab-link {
-    cursor: pointer;
-    padding: 10px;
-    display: block;
-    color: #333;
-    text-decoration: none;
-}
-
-.tab-link:hover {
-    background-color: #ddd;
-}
-
-.tab-link.active {
     background-color: #830000;
     color: #fff;
 }

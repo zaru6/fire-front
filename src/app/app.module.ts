@@ -25,6 +25,7 @@ import { DiscussionComponent } from './discussion/discussion.component';
 import { DiscussionDetailComponent } from './discussion-detail/discussion-detail.component';
 import { TopicFormComponent } from './topic-form/topic-form.component';
 import { TopicReplyFormComponent } from './topic-reply-form/topic-reply-form.component';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { TopicReplyFormComponent } from './topic-reply-form/topic-reply-form.com
     MatTabsModule,
     MatSidenavModule,
     MatListModule,
+    MatIconModule,
     BrowserAnimationsModule 
    ],
   providers: [

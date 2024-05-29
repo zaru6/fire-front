@@ -11,6 +11,7 @@ import { TopicService } from '../topic.service';
 import { TopicReplyService } from '../topic-reply.service';
 import { Topic } from '../topic.model';
 import { TopicReply } from '../topic-reply.model';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-models',
@@ -24,6 +25,11 @@ export class ModelsComponent {
   subcategories: Subcategory[] = [];
   topics: Topic[] = [];
   topicReplies: TopicReply[] = [];
+
+  accordionState: { [key: string]: boolean } = {
+    'discussion': true,
+    'models': true
+  };
 
   constructor(
     private productService: ProductService, 
@@ -54,5 +60,13 @@ export class ModelsComponent {
 
   selectTab(index: number) {
     this.selectedIndex = index;
+  }
+
+  toggleAccordion(key: string) {
+    this.accordionState[key] = !this.accordionState[key];
+  }
+
+  isAccordionOpen(key: string): boolean {
+    return this.accordionState[key];
   }
 }
