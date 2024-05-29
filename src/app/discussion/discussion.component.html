@@ -3,8 +3,8 @@
     <h1>Discussion Board</h1>
     <div *ngIf="topics.length === 0" class="no-topics">No topics available.</div>
     <div *ngFor="let topic of topics" class="topic-card">
-        <h2>{{ topic.title }}</h2>
-        <p class="description">{{ topic.title }}</p>
+        <a [routerLink]="['/discussion', topic.id]" class="topic-title">{{ topic.title }}</a>
+        <p class="description">{{ topic.description }}</p>
         <div class="metadata">
             <span>Created by User {{ topic.createdBy }}</span>
             <span>{{ topic.createdAt | date: 'medium' }}</span>

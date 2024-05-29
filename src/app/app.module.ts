@@ -22,6 +22,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { ProductdtosComponent } from './productdtos/productdtos.component';
 import { DiscussionComponent } from './discussion/discussion.component';
+import { DiscussionDetailComponent } from './discussion-detail/discussion-detail.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,7 @@ import { DiscussionComponent } from './discussion/discussion.component';
     ProductFormComponent, 
     NotificationComponent, 
     UploadComponent, 
-    ProductFormUpdateComponent, ProductdtosComponent, DiscussionComponent],
+    ProductFormUpdateComponent, ProductdtosComponent, DiscussionComponent, DiscussionDetailComponent],
   imports: [
     BrowserModule, 
     HttpClientModule,
