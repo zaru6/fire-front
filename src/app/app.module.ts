@@ -23,6 +23,7 @@ import { MatListModule } from '@angular/material/list';
 import { ProductdtosComponent } from './productdtos/productdtos.component';
 import { DiscussionComponent } from './discussion/discussion.component';
 import { DiscussionDetailComponent } from './discussion-detail/discussion-detail.component';
+import { TopicFormComponent } from './topic-form/topic-form.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,7 @@ import { DiscussionDetailComponent } from './discussion-detail/discussion-detail
     ProductFormComponent, 
     NotificationComponent, 
     UploadComponent, 
-    ProductFormUpdateComponent, ProductdtosComponent, DiscussionComponent, DiscussionDetailComponent],
+    ProductFormUpdateComponent, ProductdtosComponent, DiscussionComponent, DiscussionDetailComponent, TopicFormComponent],
   imports: [
     BrowserModule, 
     HttpClientModule,

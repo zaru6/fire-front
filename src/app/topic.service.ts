@@ -33,4 +33,14 @@ export class TopicService {
     return this.http.get<Topic>(`${this.discussionApiUrl}/${id}`, httpOptions);
   }
 
+  addTopic(topic: Topic) {
+    const token = localStorage.getItem("token");
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': 'Bearer ' + token // Add the token here
+      })
+    };
+    return this.http.post(this.discussionApiUrl, topic, httpOptions);
+  }
+
 }
