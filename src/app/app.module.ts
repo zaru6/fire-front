@@ -24,6 +24,7 @@ import { ProductdtosComponent } from './productdtos/productdtos.component';
 import { DiscussionComponent } from './discussion/discussion.component';
 import { DiscussionDetailComponent } from './discussion-detail/discussion-detail.component';
 import { TopicFormComponent } from './topic-form/topic-form.component';
+import { TopicReplyFormComponent } from './topic-reply-form/topic-reply-form.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,7 @@ import { TopicFormComponent } from './topic-form/topic-form.component';
     ProductFormComponent, 
     NotificationComponent, 
     UploadComponent, 
-    ProductFormUpdateComponent, ProductdtosComponent, DiscussionComponent, DiscussionDetailComponent, TopicFormComponent],
+    ProductFormUpdateComponent, ProductdtosComponent, DiscussionComponent, DiscussionDetailComponent, TopicFormComponent, TopicReplyFormComponent],
   imports: [
     BrowserModule, 
     HttpClientModule,

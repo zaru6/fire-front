@@ -9,6 +9,7 @@ import { TopicReply } from './topic-reply.model';
 export class TopicReplyService {
 
   private repliesApiUrl = 'http://localhost:8080/api/discussion/topic-replies';
+  private addReplyApiUrl = 'http://localhost:8080/api/discussion/replies';
 
   constructor(private http: HttpClient) { }
 
@@ -21,5 +22,15 @@ export class TopicReplyService {
       })
     };
     return this.http.get<TopicReply[]>(`${this.repliesApiUrl}/${id}`, httpOptions);
+  }
+
+  addTopicReply(topicReply: TopicReply) {
+    const token = localStorage.getItem("token");
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': 'Bearer ' + token // Add the token here
+      })
+    };
+    return this.http.post(this.addReplyApiUrl, topicReply, httpOptions);
   }
 }

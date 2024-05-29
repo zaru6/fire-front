@@ -1,0 +1,9 @@
+<h1>Write Your Reply</h1>
+<form (ngSubmit)="addTopicReply(topicReply)">
+    <div class="form-group">
+        <label for="topic-reply">Reply</label>
+        <textarea class="form-control" id="topic-reply" [(ngModel)]="topicReply.replyText" name="topic-reply" rows="5" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+    <button type="close" class="btn btn-primary" (click)="closeModal()">Close</button>
+</form>

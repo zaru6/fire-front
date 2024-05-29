@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Topic } from '../topic.model';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { TopicReply } from '../topic-reply.model';
 import { TopicService } from '../topic.service';
 import { TopicReplyService } from '../topic-reply.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { TopicReplyFormComponent } from '../topic-reply-form/topic-reply-form.component';
 
 @Component({
   selector: 'app-discussion-detail',
@@ -13,11 +15,14 @@ import { TopicReplyService } from '../topic-reply.service';
 })
 export class DiscussionDetailComponent {
 
+  @Output() closeButtonClick = new EventEmitter();
+
   constructor(
-    private route: ActivatedRoute, 
+    private route: ActivatedRoute,
     private http: HttpClient,
     private topicService: TopicService,
-    private topicReplyService: TopicReplyService) { }
+    private topicReplyService: TopicReplyService,
+    private modalService: NgbModal) { }
 
   topic: Topic | undefined;
   replies: TopicReply[] = [];
@@ -42,17 +47,34 @@ export class DiscussionDetailComponent {
   }
 
   fetchReplies(topicId: number): void {
-    this.topicReplyService.getTopicReplies(topicId)
-      .subscribe(
-        (data) => {
-          this.replies = data;
-        },
-        (error) => {
-          console.error('Error fetching replies:', error);
-        }
-      );
+    this.topicReplyService.getTopicReplies(topicId).subscribe(
+      (data) => {
+        this.replies = data;
+      },
+      (error) => {
+        console.error('Error fetching replies:', error);
+      }
+    );
   }
 
+  openTopicForm(): void {
+    const modalRef = this.modalService.open(TopicReplyFormComponent);
+    modalRef.componentInstance.topic = this.topic;
+    modalRef.componentInstance.closeButtonClick.subscribe(() => {
+      modalRef.close();
+    });
+    modalRef.result.then(
+      result => {
+        console.log('Closed with:', result);
+      },
+      reason => {
+        console.log('Dismissed', reason);
+      }
+    );
+  }
 
+  closeModal() {
+    this.closeButtonClick.emit();
+  }
 
 }
