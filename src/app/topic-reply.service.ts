@@ -1,17 +1,18 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Topic } from './topic.model';
+import { TopicReply } from './topic-reply.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class DiscussionService {
-  private discussionApiUrl = 'http://localhost:8080/api/discussion/topics';
+export class TopicReplyService {
+
+  private repliesApiUrl = 'http://localhost:8080/api/discussion/topic-replies';
 
   constructor(private http: HttpClient) { }
 
-  getTopics(): Observable<Topic[]> {
+  getTopicReplies(id: number): Observable<TopicReply[]> {
     const token = localStorage.getItem("token");
     const httpOptions = {
       headers: new HttpHeaders({
@@ -19,6 +20,6 @@ export class DiscussionService {
         'Authorization': 'Bearer ' + token // Add the token here
       })
     };
-    return this.http.get<Topic[]>(this.discussionApiUrl, httpOptions);
+    return this.http.get<TopicReply[]>(`${this.repliesApiUrl}/${id}`, httpOptions);
   }
 }

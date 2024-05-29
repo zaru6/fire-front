@@ -1,9 +1,21 @@
-<app-navbar></app-navbar>
-<div class="discussion-detail-container">
-    <h1>{{ topic?.title }}</h1>
-    <p>{{ topic?.description }}</p>
+<div class="discussion-detail-container" *ngIf="topic">
+    <h1>{{ topic.title }}</h1>
+    <p>{{ topic.description }}</p>
     <div class="metadata">
-        <span>Created by User {{ topic?.createdBy }}</span>
-        <span>{{ topic?.createdAt | date: 'medium' }}</span>
+        <span>Created by User {{ topic.createdBy }}</span>
+        <span>{{ topic.createdAt | date: 'medium' }}</span>
+    </div>
+
+    <div class="replies-section">
+        <h2>Replies</h2>
+        <div *ngIf="replies.length === 0" class="no-replies">No replies yet.</div>
+        <div *ngFor="let reply of replies" class="reply-card">
+            <p class="reply-text">{{ reply.replyText }}</p>
+            <div class="reply-metadata">
+                <span>Reply #{{ reply.replyOrder }}</span>
+                <span>By User {{ reply.createdBy }}</span>
+                <span>{{ reply.createdAt | date: 'medium' }}</span>
+            </div>
+        </div>
     </div>
 </div>

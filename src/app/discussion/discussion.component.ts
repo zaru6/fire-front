@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { DiscussionService } from '../discussion.service';
+import { TopicService } from '../topic.service';
 import { Topic } from '../topic.model';
 
 @Component({
@@ -12,14 +12,14 @@ export class DiscussionComponent {
 
   topics: Topic[] = [];
 
-  constructor(private http: HttpClient, private discussionService: DiscussionService) {}
+  constructor(private http: HttpClient, private topicService: TopicService) {}
 
   ngOnInit(): void {
     this.getTopics();
   }
 
   getTopics(): void {
-    this.discussionService.getTopics().subscribe(
+    this.topicService.getTopics().subscribe(
         (data) => {
           this.topics = data;
         },
