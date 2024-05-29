@@ -2,9 +2,15 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav mode="side" opened class="sidenav">
     <mat-nav-list>
-      <mat-list-item class="tab-link" [class.active]="selectedIndex === 0" (click)="selectTab(0)">Products</mat-list-item>
-      <mat-list-item class="tab-link" [class.active]="selectedIndex === 1" (click)="selectTab(1)">Categories</mat-list-item>
-      <mat-list-item class="tab-link" [class.active]="selectedIndex === 2" (click)="selectTab(2)">Subcategories</mat-list-item>
+      <mat-list-item class="tab-link" [class.active]="selectedIndex === 0" (click)="selectTab(0)">Topics</mat-list-item>
+      <mat-list-item class="tab-link" [class.active]="selectedIndex === 1"
+        (click)="selectTab(1)">Replies</mat-list-item>
+      <mat-list-item class="tab-link" [class.active]="selectedIndex === 2"
+        (click)="selectTab(2)">Products</mat-list-item>
+      <mat-list-item class="tab-link" [class.active]="selectedIndex === 3"
+        (click)="selectTab(3)">Categories</mat-list-item>
+      <mat-list-item class="tab-link" [class.active]="selectedIndex === 4"
+        (click)="selectTab(4)">Subcategories</mat-list-item>
     </mat-nav-list>
   </mat-sidenav>
 
@@ -14,10 +20,63 @@
         <thead>
           <tr>
             <th>ID</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Created By</th>
+            <th>Created At</th>
+            <th>Updated At</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let topic of topics">
+            <td>{{ topic.id }}</td>
+            <td>{{ topic.title }}</td>
+            <td>{{ topic.description }}</td>
+            <td>{{ topic.createdBy }}</td>
+            <td>{{ topic.createdAt }}</td>
+            <td>{{ topic.updatedAt }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div *ngIf="selectedIndex === 1" class="tab-content">
+      <table class="basic-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Reply Text</th>
+            <th>Topic ID</th>
+            <th>Reply Order</th>
+            <th>Created By</th>
+            <th>Created At</th>
+            <th>Updated At</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let reply of topicReplies">
+            <td>{{ reply.id }}</td>
+            <td>{{ reply.replyText }}</td>
+            <td>{{ reply.topicId }}</td>
+            <td>{{ reply.replyOrder }}</td>
+            <td>{{ reply.createdBy }}</td>
+            <td>{{ reply.createdAt }}</td>
+            <td>{{ reply.updatedAt }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div *ngIf="selectedIndex === 2" class="tab-content">
+      <table class="basic-table">
+        <thead>
+          <tr>
+            <th>ID</th>
             <th>Name</th>
             <th>Price</th>
             <th>Subcategory ID</th>
             <th>Available</th>
+            <th>Created By</th>
+            <th>Created At</th>
+            <th>Updated At</th>
           </tr>
         </thead>
         <tbody>
@@ -27,11 +86,14 @@
             <td>{{ product.price }}</td>
             <td>{{ product.subcategoryId }}</td>
             <td>{{ product.available }}</td>
+            <td>{{ product.createdBy }}</td>
+            <td>{{ product.createdAt }}</td>
+            <td>{{ product.updatedAt }}</td>
           </tr>
         </tbody>
       </table>
     </div>
-    <div *ngIf="selectedIndex === 1" class="tab-content">
+    <div *ngIf="selectedIndex === 3" class="tab-content">
       <table class="basic-table">
         <thead>
           <tr>
@@ -49,7 +111,7 @@
         </tbody>
       </table>
     </div>
-    <div *ngIf="selectedIndex === 2" class="tab-content">
+    <div *ngIf="selectedIndex === 4" class="tab-content">
       <table class="basic-table">
         <thead>
           <tr>

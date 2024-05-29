@@ -7,6 +7,10 @@ import { AuthenticationService } from '../authentication.service';
 import { Category } from '../category.model';
 import { ModelService } from '../model.service';
 import { Subcategory } from '../subcategory.model';
+import { TopicService } from '../topic.service';
+import { TopicReplyService } from '../topic-reply.service';
+import { Topic } from '../topic.model';
+import { TopicReply } from '../topic-reply.model';
 
 @Component({
   selector: 'app-models',
@@ -18,10 +22,14 @@ export class ModelsComponent {
   products: Product[] = [];
   categories: Category[] = [];
   subcategories: Subcategory[] = [];
+  topics: Topic[] = [];
+  topicReplies: TopicReply[] = [];
 
   constructor(
     private productService: ProductService, 
     private modelService: ModelService, 
+    private topicService: TopicService,
+    private topicReplyService: TopicReplyService,
     private http: HttpClient, 
     private router: Router, 
     private authenticationService: AuthenticationService) { }
@@ -35,6 +43,12 @@ export class ModelsComponent {
     });
     this.modelService.getSubcategories().subscribe(subcategories => {
       this.subcategories = subcategories;
+    });
+    this.topicService.getTopics().subscribe(topics => {
+      this.topics = topics;
+    });
+    this.topicReplyService.getAllTopicReplies().subscribe(topicReplies => {
+      this.topicReplies = topicReplies;
     });
   }
 
